@@ -1,1 +1,1 @@
-ImageBART - coming soon
+ImageBART - Project Page

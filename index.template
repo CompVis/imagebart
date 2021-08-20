@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<!--
+  Based on
+	Spatial by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117339330-4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-117339330-4');
+    </script>
+
+    <title>
+      ImageBART: Bidirectional Context with Multinomial Diffusion for Autoregressive Image Synthesis
+    </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="landing">
+
+		<!-- Banner -->
+			<section id="banner" style="background-attachment:scroll;">
+        <h2>
+          ImageBART: Bidirectional Context with Multinomial <br/>Diffusion for Autoregressive Image Synthesis
+        </h2>
+        <p>
+        <a href="https://github.com/pesser">Patrick Esser</a>&ast;, 
+        <a href="https://github.com/rromb">Robin Rombach</a>&ast;,
+        <a href="https://github.com/ablattmann">Andreas Blattmann</a>&ast;,
+        <a href="https://hci.iwr.uni-heidelberg.de/Staff/bommer">Bj&ouml;rn Ommer</a><br/>
+        <a href="https://www.iwr.uni-heidelberg.de/">IWR, Heidelberg University</a>
+        </p>
+			</section>
+
+			<!-- One -->
+				<section id="one" class="wrapper style1">
+					<div class="container 75%">
+                    <div class="image fit captioned align-left"
+                                style="margin-bottom:2em; box-shadow:0 0;
+                                text-align:justify">
+                      <img src="paper/teaser.jpg" alt="" style="border:0px solid black"/>
+                    </div>
+						<div class="row 200%">
+							<div class="6u 12u$(medium)">
+                  <div class="container 25%">
+
+                      <h1>TL;DR</h1>
+                <p style="text-align: justify">
+                      We introduce bidirectional context into autoregressive
+                      image synthesis by learning to revert a multinomial
+                      diffusion process on a compressed representation,
+                      and show how this improves the control over of the generative process.
+                </p>
+
+                      <h1>Paper</h1>
+
+                    <div class="image fit captioned align-center"
+                                style="margin-bottom:0em; box-shadow:0 0">
+                      <a href="paper/paper.pdf">
+                        <img src="paper/paper.jpg" alt="" style="border:1px solid black"/>
+                      </a>
+                      <a href="https://arxiv.org/abs/2108.08827">arXiv</a>
+                      <div class="headerDivider"></div>
+                      <a href="paper/paper.bib">BibTeX</a>
+                      <!--<div class="headerDivider"></div>
+                      <a href="https://github.com/CompVis/imagebart">GitHub</a>-->
+                      <br/>
+                      &ast; equal contribution
+                    </div>
+
+                  </div>
+							</div>
+							<div class="6u$ 12u$(medium)">
+                <h1>Abstract</h1>
+                <p style="text-align: justify">
+Autoregressive models and their sequential factorization of the data likelihood have recently demonstrated great potential for image representation and synthesis. Nevertheless, they incorporate image context in a linear 1D order by attending only to previously synthesized image patches above or to the left. Not only is this unidirectional, sequential bias of attention unnatural for images as it disregards large parts of a scene until synthesis is almost complete. It also processes the entire image on a single scale, thus ignoring more global contextual information up to the gist of the entire scene. As a remedy we incorporate a coarse-to-fine hierarchy of context by combining the autoregressive formulation with a multinomial diffusion process: Whereas a multistage diffusion process successively removes information to coarsen an image, we train a (short) Markov chain to invert this process. In each stage, the resulting autoregressive ImageBART model progressively incorporates context from previous stages in a coarse-to-fine manner. Experiments show greatly improved image modification capabilities over autoregressive models while also providing high-fidelity image generation, both of which are enabled through efficient training in a compressed latent space. Specifically, our approach can take unrestricted, user-provided masks into account to perform local image editing. Thus, in contrast to pure autoregressive models, it can solve free-form image inpainting and, in the case of conditional models, local, text-guided image modification without requiring mask-specific training.
+                </p>
+							</div>
+						</div>
+            <!--
+          <p style="text-align:center">Related work <br/><a
+             href="https://compvis.github.io/iin/">"A Disentangling
+             Invertible Interpretation Network for Explaining Latent
+           Representations"</a></p>
+					</div>
+            -->
+				</section>
+
+			<!-- Two -->
+				<section id="two" class="wrapper style2 special">
+					<div class="container">
+						<header class="major">
+							<h2>Results</h2>
+							<p>and applications of our model.</p>
+						</header>
+
+            __TEMPLATE_STRING__
+
+				  </div>
+				</section>
+
+						</div>
+				</section>
+
+
+			<!-- Four -->
+				<section id="four" class="wrapper style3 special"
+          style="background-attachment:scroll;background-position:center bottom;">
+					<div class="container">
+						<header class="major">
+							<h2>Acknowledgement</h2>
+              <p>
+              This page is based on a design by <a href="http://templated.co">TEMPLATED</a>.
+              </p>
+						</header>
+					</div>
+				</section>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

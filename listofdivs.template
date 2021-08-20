@@ -1,0 +1,181 @@
+<div class="image fit captioned align-just">
+<a href="paper/teaser.jpg">
+<img src="paper/teaser.jpg" alt="" />
+</a>
+Figure 1: We first learn a compressed, discrete image representation x1 and subsequently our generative ImageBART model reverts a fixed multinomial diffusion process via a Markov Chain, where the individual transition probabilities are modeled as independent autoregressive encoder-decoder models. This introduces a coarse-to-fine hierarchy such that each individual AR model can attend to global context from its preceding scale in the hierarchy.
+</div>
+==========
+<div class="image fit captioned align-just">
+<a href="images/article-Figure2-1.jpg">
+<img src="images/article-Figure2-1.jpg" alt="" />
+</a>
+Figure 2: Samples from our models. Top row: FFHQ, LSUN-Cats, Middle row: LSUN-Bedrooms, LSUNChurches, Bottom row: ImageNet.
+</div>
+==========
+<div class="image fit captioned align-just">
+<a href="images/article-Table1-1.jpg">
+<img src="images/article-Table1-1.jpg" alt="" />
+</a>
+Table 1: Left: FIDs on the LSUN-{Churches,Beds,Cats} [76] and FFHQ [30] datasets. Right: Corresponding qualitative comparisons. Qualitative comparisons with TT can be found in Fig. 20 and Fig. 21
+</div>
+==========
+<div class="image fit captioned align-just">
+<a href="images/article-Table2-1.jpg">
+<img src="images/article-Table2-1.jpg" alt="" />
+</a>
+Table 2: Quantitative analysis on conditional models. Left: Results on class conditional Imagenet for different rejection rates, see also Fig, 20 in the supplemental. Right: Results of text-conditional ImageBART and comparison with TT [18] on the CC test set. Corresponding qualitative comparisons can be found in Fig. 21.
+</div>
+==========
+<div class="image fit captioned align-just">
+<a href="images/article-Figure3-1.jpg">
+<img src="images/article-Figure3-1.jpg" alt="" />
+</a>
+Figure 3: Samples from text-conditional ImageBART. Best 2 of 32 with reranking as in [53].
+</div>
+==========
+<div class="image fit captioned align-just">
+<a href="images/article-Figure4-1.jpg">
+<img src="images/article-Figure4-1.jpg" alt="" />
+</a>
+Figure 4: ImageBART is capable of generating high-resolution images. Here, we condition it on text prompts and interpolate between the two descriptions depicted above the image (see also Sec. 4.2).
+</div>
+==========
+<div class="image fit captioned align-just">
+<a href="images/article-Figure5-1.jpg">
+<img src="images/article-Figure5-1.jpg" alt="" />
+</a>
+Figure 5: Without global context, AR models fail at completing upper halfs, contrasting ImageBART.
+</div>
+==========
+<div class="image fit captioned align-just">
+<a href="images/article-Figure6-1.jpg">
+<img src="images/article-Figure6-1.jpg" alt="" />
+</a>
+Figure 6: Local editing application using markov chain of length 16 on FFHQ. By incorporating bidirectional context ImageBART is able to solve this unconditional inpainting task (cf. Sec. 4.3).
+</div>
+==========
+<div class="image fit captioned align-just">
+<a href="images/article-Figure7-1.jpg">
+<img src="images/article-Figure7-1.jpg" alt="" />
+</a>
+Figure 7: Conditionally guided inpainting results obtained from conditional ImageBART trained on the i) ImageNet (top row) and ii) Conceptual Captions (bottom row) datasets.
+</div>
+==========
+<div class="image fit captioned align-just">
+<a href="images/article-Figure11-1.jpg">
+<img src="images/article-Figure11-1.jpg" alt="" />
+</a>
+Figure 11: Additional samples from our text-conditional model.
+</div>
+==========
+<div class="image fit captioned align-just">
+<a href="images/article-Table3-1.jpg">
+<img src="images/article-Table3-1.jpg" alt="" />
+</a>
+Table 3: Assessing the effect of different T with a fixed number of parameters distributed equally over all scales. All models are trained on FFHQ. Left: Full image generation results. Right: Using the example of upper image completion, we evaluate the ability to complete and modifiy an image, see Sec. 4.3 and 4.4.
+</div>
+==========
+<div class="image fit captioned align-just">
+<a href="images/article-Figure8-1.jpg">
+<img src="images/article-Figure8-1.jpg" alt="" />
+</a>
+Figure 8: Left: Effect of number of encoder vs. decoder layers for a fixed total number of model parameters, evaluated on LSUN-Churches. Right: Our model achieves better sampling performance than state of the art diffusion models (SSDE [65], DDPM [26], ADM [13]) and also approaches the inference speed of TT [18], which only consists of a single autoregressive stage. Reducing the number of scales increases inference speed at the expense of controllability.
+</div>
+==========
+<div class="image fit captioned align-just">
+<a href="images/article-Figure15-1.jpg">
+<img src="images/article-Figure15-1.jpg" alt="" />
+</a>
+Figure 15: Conditionally guided inpainting results obtained from conditional ImageBART trained on the ImageNet dataset.
+</div>
+==========
+<div class="image fit captioned align-just">
+<a href="images/article-Figure16-1.jpg">
+<img src="images/article-Figure16-1.jpg" alt="" />
+</a>
+Figure 16: Additional results on conditional inpainting obtained from conditional ImageBART trained on the Conceptual Captions dataset.
+</div>
+==========
+<div class="image fit captioned align-just">
+<a href="images/article-Figure10-1.jpg">
+<img src="images/article-Figure10-1.jpg" alt="" />
+</a>
+Figure 10: Additional samples for class-conditional synthesis results on ImageNet.
+</div>
+==========
+<div class="image fit captioned align-just">
+<a href="images/article-Figure14-1.jpg">
+<img src="images/article-Figure14-1.jpg" alt="" />
+</a>
+Figure 14: Additional examples for upper half completion as in Fig. 5. The top shows masked inputs, results by TT [18] and results by ImageBART. The bottom shows every other sample of the forward-backward chain described in Sec. 4.3 and Sec. A.3. ImageBART can incorporate global context to produce consistent completions, whereas TT is limited to context from above and thus fails to produce consistent completions.
+</div>
+==========
+<div class="image fit captioned align-just">
+<a href="images/article-Figure18-1.jpg">
+<img src="images/article-Figure18-1.jpg" alt="" />
+</a>
+Figure 18: Additional class-conditional 256 × 256 random samples on ImageNet. Depicted classes are 11: goldfinch (top left), 90: lorikeet (top right), 108: sea anemone (bottom left) and 0: tench (bottom right).
+</div>
+==========
+<div class="image fit captioned align-just">
+<a href="images/article-Figure19-1.jpg">
+<img src="images/article-Figure19-1.jpg" alt="" />
+</a>
+Figure 19: Additional class-conditional 256× 256 random samples on ImageNet. Depicted classes are 200: tibetian terrier (top left), 974: geyser (top right), 933: cheeseburger (bottom left) and 510: container ship (bottom right).
+</div>
+==========
+<div class="image fit captioned align-just">
+<a href="images/article-Figure20-1.jpg">
+<img src="images/article-Figure20-1.jpg" alt="" />
+</a>
+Figure 20: Qualitative and quantitative comparison of cIN samples for different rejection rates as in Tab. 1.
+</div>
+==========
+<div class="image fit captioned align-just">
+<a href="images/article-Figure21-1.jpg">
+<img src="images/article-Figure21-1.jpg" alt="" />
+</a>
+Figure 21: Random samples of text-conditional ImageBART and the text-conditional version of TT for the user defined text prompts above each row.
+</div>
+==========
+<div class="image fit captioned align-just">
+<a href="images/article-Figure22-1.jpg">
+<img src="images/article-Figure22-1.jpg" alt="" />
+</a>
+Figure 22: Additional 256× 256 samples on the LSUN-church dataset.
+</div>
+==========
+<div class="image fit captioned align-just">
+<a href="images/article-Figure23-1.jpg">
+<img src="images/article-Figure23-1.jpg" alt="" />
+</a>
+Figure 23: Additional random samples from our model trained on the LSUN-Cats dataset.
+</div>
+==========
+<div class="image fit captioned align-just">
+<a href="images/article-Figure24-1.jpg">
+<img src="images/article-Figure24-1.jpg" alt="" />
+</a>
+Figure 24: Additional random samples from our model trained on the LSUN-Bedrooms dataset.
+</div>
+==========
+<div class="image fit captioned align-just">
+<a href="images/article-Figure25-1.jpg">
+<img src="images/article-Figure25-1.jpg" alt="" />
+</a>
+Figure 25: Additional 256× 256 samples on the FFHQ dataset
+</div>
+==========
+<div class="image fit captioned align-just">
+<a href="images/article-Figure26-1.jpg">
+<img src="images/article-Figure26-1.jpg" alt="" />
+</a>
+Figure 26: Nearest neighbors to samples from ImageBART from the FFHQ train set measured by averaging over different feature layers of a VGG-16 trained on ImageNet. The first example in each row shows a generated sample from our model. The remaining ones depict the corresponding nearest neighbors in ascending order.
+</div>
+==========
+<div class="image fit captioned align-just">
+<a href="images/article-Figure27-1.jpg">
+<img src="images/article-Figure27-1.jpg" alt="" />
+</a>
+Figure 27: Nearest neighbors to samples from ImageBART from the LSUN-churches train set measured by averaging over different feature layers of a VGG-16 trained on ImageNet. The first example in each row shows a generated sample from our model. The remaining ones depict the corresponding nearest neighbors in ascending order.
+</div>

@@ -1,10 +1,393 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<!--
+  Based on
+	Spatial by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>ImageBART</title>
-  </head>
-  <body>
-    <p>ImageBART - coming soon</p>
-  </body>
+	<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117339330-4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-117339330-4');
+    </script>
+
+    <title>
+      ImageBART: Bidirectional Context with Multinomial Diffusion for Autoregressive Image Synthesis
+    </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="landing">
+
+		<!-- Banner -->
+			<section id="banner" style="background-attachment:scroll;">
+        <h2>
+          ImageBART: Bidirectional Context with Multinomial <br/>Diffusion for Autoregressive Image Synthesis
+        </h2>
+        <p>
+        <a href="https://github.com/pesser">Patrick Esser</a>&ast;, 
+        <a href="https://github.com/rromb">Robin Rombach</a>&ast;,
+        <a href="https://github.com/ablattmann">Andreas Blattmann</a>&ast;,
+        <a href="https://hci.iwr.uni-heidelberg.de/Staff/bommer">Bj&ouml;rn Ommer</a><br/>
+        <a href="https://www.iwr.uni-heidelberg.de/">IWR, Heidelberg University</a>
+        </p>
+			</section>
+
+			<!-- One -->
+				<section id="one" class="wrapper style1">
+					<div class="container 75%">
+                    <div class="image fit captioned align-left"
+                                style="margin-bottom:2em; box-shadow:0 0;
+                                text-align:justify">
+                      <img src="paper/teaser.jpg" alt="" style="border:0px solid black"/>
+                    </div>
+						<div class="row 200%">
+							<div class="6u 12u$(medium)">
+                  <div class="container 25%">
+
+                      <h1>TL;DR</h1>
+                <p style="text-align: justify">
+                      We introduce bidirectional context into autoregressive
+                      image synthesis by learning to revert a multinomial
+                      diffusion process on a compressed representation,
+                      and show how this improves the control over of the generative process.
+                </p>
+
+                      <h1>Paper</h1>
+
+                    <div class="image fit captioned align-center"
+                                style="margin-bottom:0em; box-shadow:0 0">
+                      <a href="paper/paper.pdf">
+                        <img src="paper/paper.jpg" alt="" style="border:1px solid black"/>
+                      </a>
+                      <a href="https://arxiv.org/abs/2108.08827">arXiv</a>
+                      <div class="headerDivider"></div>
+                      <a href="paper/paper.bib">BibTeX</a>
+                      <!--<div class="headerDivider"></div>
+                      <a href="https://github.com/CompVis/imagebart">GitHub</a>-->
+                      <br/>
+                      &ast; equal contribution
+                    </div>
+
+                  </div>
+							</div>
+							<div class="6u$ 12u$(medium)">
+                <h1>Abstract</h1>
+                <p style="text-align: justify">
+Autoregressive models and their sequential factorization of the data likelihood have recently demonstrated great potential for image representation and synthesis. Nevertheless, they incorporate image context in a linear 1D order by attending only to previously synthesized image patches above or to the left. Not only is this unidirectional, sequential bias of attention unnatural for images as it disregards large parts of a scene until synthesis is almost complete. It also processes the entire image on a single scale, thus ignoring more global contextual information up to the gist of the entire scene. As a remedy we incorporate a coarse-to-fine hierarchy of context by combining the autoregressive formulation with a multinomial diffusion process: Whereas a multistage diffusion process successively removes information to coarsen an image, we train a (short) Markov chain to invert this process. In each stage, the resulting autoregressive ImageBART model progressively incorporates context from previous stages in a coarse-to-fine manner. Experiments show greatly improved image modification capabilities over autoregressive models while also providing high-fidelity image generation, both of which are enabled through efficient training in a compressed latent space. Specifically, our approach can take unrestricted, user-provided masks into account to perform local image editing. Thus, in contrast to pure autoregressive models, it can solve free-form image inpainting and, in the case of conditional models, local, text-guided image modification without requiring mask-specific training.
+                </p>
+							</div>
+						</div>
+            <!--
+          <p style="text-align:center">Related work <br/><a
+             href="https://compvis.github.io/iin/">"A Disentangling
+             Invertible Interpretation Network for Explaining Latent
+           Representations"</a></p>
+					</div>
+            -->
+				</section>
+
+			<!-- Two -->
+				<section id="two" class="wrapper style2 special">
+					<div class="container">
+						<header class="major">
+							<h2>Results</h2>
+							<p>and applications of our model.</p>
+						</header>
+
+            <div class="row 150%">
+<div class="6u 12u$(xsmall)">
+<div class="image fit captioned align-just">
+<a href="paper/teaser.jpg">
+<img src="paper/teaser.jpg" alt="" />
+</a>
+Figure 1: We first learn a compressed, discrete image representation x1 and subsequently our generative ImageBART model reverts a fixed multinomial diffusion process via a Markov Chain, where the individual transition probabilities are modeled as independent autoregressive encoder-decoder models. This introduces a coarse-to-fine hierarchy such that each individual AR model can attend to global context from its preceding scale in the hierarchy.
+</div>
+</div>
+<div class="6u$ 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<a href="images/article-Figure2-1.jpg">
+<img src="images/article-Figure2-1.jpg" alt="" />
+</a>
+Figure 2: Samples from our models. Top row: FFHQ, LSUN-Cats, Middle row: LSUN-Bedrooms, LSUNChurches, Bottom row: ImageNet.
+</div>
+</div>
+</div>
+<div class="row 150%">
+<div class="6u 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<a href="images/article-Table1-1.jpg">
+<img src="images/article-Table1-1.jpg" alt="" />
+</a>
+Table 1: Left: FIDs on the LSUN-{Churches,Beds,Cats} [76] and FFHQ [30] datasets. Right: Corresponding qualitative comparisons. Qualitative comparisons with TT can be found in Fig. 20 and Fig. 21
+</div>
+</div>
+<div class="6u$ 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<a href="images/article-Table2-1.jpg">
+<img src="images/article-Table2-1.jpg" alt="" />
+</a>
+Table 2: Quantitative analysis on conditional models. Left: Results on class conditional Imagenet for different rejection rates, see also Fig, 20 in the supplemental. Right: Results of text-conditional ImageBART and comparison with TT [18] on the CC test set. Corresponding qualitative comparisons can be found in Fig. 21.
+</div>
+</div>
+</div>
+<div class="row 150%">
+<div class="6u 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<a href="images/article-Figure3-1.jpg">
+<img src="images/article-Figure3-1.jpg" alt="" />
+</a>
+Figure 3: Samples from text-conditional ImageBART. Best 2 of 32 with reranking as in [53].
+</div>
+</div>
+<div class="6u$ 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<a href="images/article-Figure4-1.jpg">
+<img src="images/article-Figure4-1.jpg" alt="" />
+</a>
+Figure 4: ImageBART is capable of generating high-resolution images. Here, we condition it on text prompts and interpolate between the two descriptions depicted above the image (see also Sec. 4.2).
+</div>
+</div>
+</div>
+<div class="row 150%">
+<div class="6u 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<a href="images/article-Figure5-1.jpg">
+<img src="images/article-Figure5-1.jpg" alt="" />
+</a>
+Figure 5: Without global context, AR models fail at completing upper halfs, contrasting ImageBART.
+</div>
+</div>
+<div class="6u$ 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<a href="images/article-Figure6-1.jpg">
+<img src="images/article-Figure6-1.jpg" alt="" />
+</a>
+Figure 6: Local editing application using markov chain of length 16 on FFHQ. By incorporating bidirectional context ImageBART is able to solve this unconditional inpainting task (cf. Sec. 4.3).
+</div>
+</div>
+</div>
+<div class="row 150%">
+<div class="6u 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<a href="images/article-Figure7-1.jpg">
+<img src="images/article-Figure7-1.jpg" alt="" />
+</a>
+Figure 7: Conditionally guided inpainting results obtained from conditional ImageBART trained on the i) ImageNet (top row) and ii) Conceptual Captions (bottom row) datasets.
+</div>
+</div>
+<div class="6u$ 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<a href="images/article-Figure11-1.jpg">
+<img src="images/article-Figure11-1.jpg" alt="" />
+</a>
+Figure 11: Additional samples from our text-conditional model.
+</div>
+</div>
+</div>
+<div class="row 150%">
+<div class="6u 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<a href="images/article-Table3-1.jpg">
+<img src="images/article-Table3-1.jpg" alt="" />
+</a>
+Table 3: Assessing the effect of different T with a fixed number of parameters distributed equally over all scales. All models are trained on FFHQ. Left: Full image generation results. Right: Using the example of upper image completion, we evaluate the ability to complete and modifiy an image, see Sec. 4.3 and 4.4.
+</div>
+</div>
+<div class="6u$ 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<a href="images/article-Figure8-1.jpg">
+<img src="images/article-Figure8-1.jpg" alt="" />
+</a>
+Figure 8: Left: Effect of number of encoder vs. decoder layers for a fixed total number of model parameters, evaluated on LSUN-Churches. Right: Our model achieves better sampling performance than state of the art diffusion models (SSDE [65], DDPM [26], ADM [13]) and also approaches the inference speed of TT [18], which only consists of a single autoregressive stage. Reducing the number of scales increases inference speed at the expense of controllability.
+</div>
+</div>
+</div>
+<div class="row 150%">
+<div class="6u 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<a href="images/article-Figure15-1.jpg">
+<img src="images/article-Figure15-1.jpg" alt="" />
+</a>
+Figure 15: Conditionally guided inpainting results obtained from conditional ImageBART trained on the ImageNet dataset.
+</div>
+</div>
+<div class="6u$ 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<a href="images/article-Figure16-1.jpg">
+<img src="images/article-Figure16-1.jpg" alt="" />
+</a>
+Figure 16: Additional results on conditional inpainting obtained from conditional ImageBART trained on the Conceptual Captions dataset.
+</div>
+</div>
+</div>
+<div class="row 150%">
+<div class="6u 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<a href="images/article-Figure10-1.jpg">
+<img src="images/article-Figure10-1.jpg" alt="" />
+</a>
+Figure 10: Additional samples for class-conditional synthesis results on ImageNet.
+</div>
+</div>
+<div class="6u$ 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<a href="images/article-Figure14-1.jpg">
+<img src="images/article-Figure14-1.jpg" alt="" />
+</a>
+Figure 14: Additional examples for upper half completion as in Fig. 5. The top shows masked inputs, results by TT [18] and results by ImageBART. The bottom shows every other sample of the forward-backward chain described in Sec. 4.3 and Sec. A.3. ImageBART can incorporate global context to produce consistent completions, whereas TT is limited to context from above and thus fails to produce consistent completions.
+</div>
+</div>
+</div>
+<div class="row 150%">
+<div class="6u 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<a href="images/article-Figure18-1.jpg">
+<img src="images/article-Figure18-1.jpg" alt="" />
+</a>
+Figure 18: Additional class-conditional 256 × 256 random samples on ImageNet. Depicted classes are 11: goldfinch (top left), 90: lorikeet (top right), 108: sea anemone (bottom left) and 0: tench (bottom right).
+</div>
+</div>
+<div class="6u$ 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<a href="images/article-Figure19-1.jpg">
+<img src="images/article-Figure19-1.jpg" alt="" />
+</a>
+Figure 19: Additional class-conditional 256× 256 random samples on ImageNet. Depicted classes are 200: tibetian terrier (top left), 974: geyser (top right), 933: cheeseburger (bottom left) and 510: container ship (bottom right).
+</div>
+</div>
+</div>
+<div class="row 150%">
+<div class="6u 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<a href="images/article-Figure20-1.jpg">
+<img src="images/article-Figure20-1.jpg" alt="" />
+</a>
+Figure 20: Qualitative and quantitative comparison of cIN samples for different rejection rates as in Tab. 1.
+</div>
+</div>
+<div class="6u$ 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<a href="images/article-Figure21-1.jpg">
+<img src="images/article-Figure21-1.jpg" alt="" />
+</a>
+Figure 21: Random samples of text-conditional ImageBART and the text-conditional version of TT for the user defined text prompts above each row.
+</div>
+</div>
+</div>
+<div class="row 150%">
+<div class="6u 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<a href="images/article-Figure22-1.jpg">
+<img src="images/article-Figure22-1.jpg" alt="" />
+</a>
+Figure 22: Additional 256× 256 samples on the LSUN-church dataset.
+</div>
+</div>
+<div class="6u$ 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<a href="images/article-Figure23-1.jpg">
+<img src="images/article-Figure23-1.jpg" alt="" />
+</a>
+Figure 23: Additional random samples from our model trained on the LSUN-Cats dataset.
+</div>
+</div>
+</div>
+<div class="row 150%">
+<div class="6u 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<a href="images/article-Figure24-1.jpg">
+<img src="images/article-Figure24-1.jpg" alt="" />
+</a>
+Figure 24: Additional random samples from our model trained on the LSUN-Bedrooms dataset.
+</div>
+</div>
+<div class="6u$ 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<a href="images/article-Figure25-1.jpg">
+<img src="images/article-Figure25-1.jpg" alt="" />
+</a>
+Figure 25: Additional 256× 256 samples on the FFHQ dataset
+</div>
+</div>
+</div>
+<div class="row 150%">
+<div class="6u 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<a href="images/article-Figure26-1.jpg">
+<img src="images/article-Figure26-1.jpg" alt="" />
+</a>
+Figure 26: Nearest neighbors to samples from ImageBART from the FFHQ train set measured by averaging over different feature layers of a VGG-16 trained on ImageNet. The first example in each row shows a generated sample from our model. The remaining ones depict the corresponding nearest neighbors in ascending order.
+</div>
+</div>
+<div class="6u$ 12u$(xsmall)">
+
+<div class="image fit captioned align-just">
+<a href="images/article-Figure27-1.jpg">
+<img src="images/article-Figure27-1.jpg" alt="" />
+</a>
+Figure 27: Nearest neighbors to samples from ImageBART from the LSUN-churches train set measured by averaging over different feature layers of a VGG-16 trained on ImageNet. The first example in each row shows a generated sample from our model. The remaining ones depict the corresponding nearest neighbors in ascending order.
+</div>
+</div>
+</div>
+
+
+				  </div>
+				</section>
+
+						</div>
+				</section>
+
+
+			<!-- Four -->
+				<section id="four" class="wrapper style3 special"
+          style="background-attachment:scroll;background-position:center bottom;">
+					<div class="container">
+						<header class="major">
+							<h2>Acknowledgement</h2>
+              <p>
+              This page is based on a design by <a href="http://templated.co">TEMPLATED</a>.
+              </p>
+						</header>
+					</div>
+				</section>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
 </html>
