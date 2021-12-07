@@ -1,0 +1,9 @@
+checkpoints:
+  - "models/bedrooms_3_scales/scale1.ckpt"
+  - "models/bedrooms_3_scales/scale2.ckpt"
+  - "models/bedrooms_3_scales/scale3.ckpt"
+
+configs:
+  - "configs/lsun-beds/lsun-beds-scale1.yaml"
+  - "configs/lsun-beds/lsun-beds-scale2.yaml"
+  - "configs/lsun-beds/lsun-beds-scale3.yaml"

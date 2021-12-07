@@ -1,0 +1,11 @@
+checkpoints:
+  - "models/ffhq_4_scales_geometric/scale1.ckpt"
+  - "models/ffhq_4_scales_geometric/scale2.ckpt"
+  - "models/ffhq_4_scales_geometric/scale3.ckpt"
+  - "models/ffhq_4_scales_geometric/scale4.ckpt"
+
+configs:
+  - "configs/ffhq/4_scales/ffhq-geometric-scale1.yaml"
+  - "configs/ffhq/4_scales/ffhq-geometric-scale2.yaml"
+  - "configs/ffhq/4_scales/ffhq-geometric-scale3.yaml"
+  - "configs/ffhq/4_scales/ffhq-geometric-scale4.yaml"

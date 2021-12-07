@@ -1,0 +1,14 @@
+checkpoints:
+  - "models/cin_5_scales_custom/scale1.ckpt"
+  - "models/cin_5_scales_custom/scale2.ckpt"
+  - "models/cin_5_scales_custom/scale3.ckpt"
+  - "models/cin_5_scales_custom/scale4.ckpt"
+  - "models/cin_5_scales_custom/scale5.ckpt"
+
+configs:
+  - "configs/imagenet/5_scales/imagenet-custom-scale1.yaml"
+  - "configs/imagenet/5_scales/imagenet-custom-scale2.yaml"
+  - "configs/imagenet/5_scales/imagenet-custom-scale3.yaml"
+  - "configs/imagenet/5_scales/imagenet-custom-scale4.yaml"
+  - "configs/imagenet/5_scales/imagenet-custom-scale5.yaml"
+>

@@ -1,0 +1,88 @@
+model:
+  base_learning_rate: 0.0625
+  target: imagebart.models.diffusion.DenoisingXTransformer
+  params:
+    first_stage_key: image
+    monitor: val/loss
+    n_scales: 3
+    single_scale: 2
+    top_k: 1022
+    alpha: 1.0
+    redraw_prob: bernoulli_PSIM
+    use_ema: true
+    scheduler_config:
+      target: imagebart.lr_scheduler.LambdaWarmUpCosineScheduler
+      params:
+        verbosity_interval: 0
+        warm_up_steps: 10000
+        max_decay_steps: 1300001
+        lr_start: 2.5e-06
+        lr_max: 0.0001
+        lr_min: 1.0e-08
+    transformer_config:
+      target: imagebart.modules.xtransformers.x_transformer.XTransformer
+      params:
+        wrap_decoder: false
+        dim: 1152
+        enc_num_tokens: 1022
+        enc_depth: 32
+        enc_heads: 16
+        enc_max_seq_len: 258
+        dec_num_tokens: 1022
+        dec_depth: 6
+        dec_heads: 16
+        tie_token_emb: false
+        dec_max_seq_len: 256
+    first_stage_config:
+      target: imagebart.models.vqgan.VQGANWrapper
+      params:
+        ckpt_path: vqgan/vqgan-churches.ckpt
+        remap: data/vqgan_indices/church_indices.npy
+        sane_index_shape: true
+        embed_dim: 256
+        n_embed: 16384
+        ddconfig:
+          double_z: false
+          z_channels: 256
+          resolution: 256
+          in_channels: 3
+          out_ch: 3
+          ch: 128
+          ch_mult:
+          - 1
+          - 1
+          - 2
+          - 2
+          - 4
+          num_res_blocks: 2
+          attn_resolutions:
+          - 16
+          dropout: 0.0
+          tanh_out: true
+        lossconfig:
+          target: taming.modules.losses.vqperceptual.DummyLoss
+data:
+  target: main.DataModuleFromConfig
+  params:
+    batch_size: 16
+    wrap: false
+    train:
+      target: imagebart.data.lsun.LSUNChurchesTrain
+      params:
+        size: 256
+    validation:
+      target: imagebart.data.lsun.LSUNChurchesValidation
+      params:
+        size: 256
+
+lightning:
+  callbacks:
+    image_logger:
+      target: main.ImageLogger
+      params:
+        batch_frequency: 1000
+        max_images: 4
+        increase_log_steps: false
+  trainer:
+    benchmark: true
+    accumulate_grad_batches: 2

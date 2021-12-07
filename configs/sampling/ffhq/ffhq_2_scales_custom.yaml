@@ -1,0 +1,7 @@
+checkpoints:
+  - "models/ffhq_2_scales_custom/scale1.ckpt"
+  - "models/ffhq_2_scales_custom/scale2.ckpt"
+
+configs:
+  - "configs/ffhq/2_scales/ffhq-custom-scale1.yaml"
+  - "configs/ffhq/2_scales/ffhq-custom-scale2.yaml"

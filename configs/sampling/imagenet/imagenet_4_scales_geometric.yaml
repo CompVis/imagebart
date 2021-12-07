@@ -1,0 +1,11 @@
+checkpoints:
+  - "models/cin_4_scales_geometric/scale1.ckpt"
+  - "models/cin_4_scales_geometric/scale2.ckpt"
+  - "models/cin_4_scales_geometric/scale3.ckpt"
+  - "models/cin_4_scales_geometric/scale4.ckpt"
+
+configs:
+  - "configs/imagenet/4_scales/imagenet_geometric_scale1.yaml"
+  - "configs/imagenet/4_scales/imagenet_geometric_scale2.yaml"
+  - "configs/imagenet/4_scales/imagenet_geometric_scale3.yaml"
+  - "configs/imagenet/4_scales/imagenet_geometric_scale4.yaml"

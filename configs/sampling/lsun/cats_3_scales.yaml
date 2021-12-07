@@ -1,0 +1,9 @@
+checkpoints:
+  - "models/cats_3_scales/scale1.ckpt"
+  - "models/cats_3_scales/scale2.ckpt"
+  - "models/cats_3_scales/scale3.ckpt"
+
+configs:
+  - "configs/lsun-cats/lsun-cats-scale1.yaml"
+  - "configs/lsun-cats/lsun-cats-scale2.yaml"
+  - "configs/lsun-cats/lsun-cats-scale3.yaml"

@@ -1,0 +1,89 @@
+model:
+  base_learning_rate: 0.0625
+  target: imagebart.models.diffusion.DecoderOnlyDenoiser
+  params:
+    first_stage_key: image
+    monitor: val/loss
+    n_scales: 5
+    single_scale: 5
+    top_k: 973
+    alpha: 1.0
+    redraw_prob: bernoulli_PSIM
+    use_ema: true
+    conditioner_config:
+      target: imagebart.util.ClassProvider
+      params:
+        key: class_label
+    scheduler_config:
+      target: imagebart.lr_scheduler.LambdaWarmUpCosineScheduler
+      params:
+        verbosity_interval: 0   # 0 or negative to disable
+        warm_up_steps: 10000
+        max_decay_steps: 10000000
+        lr_start: 2.5e-6
+        lr_max: 1.0e-4
+        lr_min: 1.0e-8
+    transformer_config:
+      target: imagebart.modules.transformer.mingpt.GPT
+      params:
+        input_vocab_size: 1000
+        vocab_size: 973
+        block_size: 258
+        n_layer: 36
+        n_head: 16
+        n_embd: 1216
+        n_unmasked: 2
+    first_stage_config:
+      target: imagebart.models.vqgan.VQGANWrapper
+      params:
+        ckpt_path: vqgan/vqgan-imagenet.ckpt
+        remap: data/vqgan_indices/imagenet_indices.npy
+        sane_index_shape: true
+        embed_dim: 256
+        n_embed: 16384
+        ddconfig:
+          double_z: false
+          z_channels: 256
+          resolution: 256
+          in_channels: 3
+          out_ch: 3
+          ch: 128
+          ch_mult:
+          - 1
+          - 1
+          - 2
+          - 2
+          - 4
+          num_res_blocks: 2
+          attn_resolutions:
+          - 16
+          dropout: 0.0
+        lossconfig:
+          target: taming.modules.losses.vqperceptual.DummyLoss
+data:
+  target: main.DataModuleFromConfig
+  params:
+    batch_size: 16
+    wrap: false
+    train:
+      target: taming.data.imagenet.ImageNetTrain
+      params:
+        config:
+          size: 256
+    validation:
+      target: taming.data.imagenet.ImageNetValidation
+      params:
+        config:
+          size: 256
+
+lightning:
+  callbacks:
+    image_logger:
+      target: main.ImageLogger
+      params:
+        batch_frequency: 1000
+        max_images: 4
+        increase_log_steps: false
+  trainer:
+    benchmark: true
+    accumulate_grad_batches: 2

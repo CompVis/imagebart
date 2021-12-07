@@ -1,0 +1,9 @@
+checkpoints:
+  - "models/churches_3_scales/scale1.ckpt"
+  - "models/churches_3_scales/scale2.ckpt"
+  - "models/churches_3_scales/scale3.ckpt"
+
+configs:
+  - "configs/lsun-churches/lsun-churches-scale1.yaml"
+  - "configs/lsun-churches/lsun-churches-scale2.yaml"
+  - "configs/lsun-churches/lsun-churches-scale3.yaml"
