@@ -218,7 +218,7 @@ def on_gpu(model, context=None):
 
 def load_model_from_config(config, sd, gpu=True, eval_mode=True):
     print("config:")
-    print(config.pretty())
+    print(OmegaConf.to_yaml(config))
     model = instantiate_from_config(config["model"])
     if sd is not None:
         m, u = model.load_state_dict(sd, strict=False)

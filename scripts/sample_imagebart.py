@@ -241,7 +241,7 @@ def render_as_grid(scale_samples, batch_size, stack=True):
 
 def load_model_from_config(config, sd, gpu=True, eval_mode=True):
     print("config:")
-    print(config.pretty())
+    print(OmegaConf.to_yaml(config))
     model = instantiate_from_config(config["model"])
     if sd is not None:
         m, u = model.load_state_dict(sd, strict=False)
@@ -292,7 +292,7 @@ if __name__ == "__main__":
     yaml_path = sys.argv[1]
     log_path = yaml_path.split(os.sep)[-1][:-5]
     paths = OmegaConf.load(yaml_path)
-    print(paths.pretty())
+    print(OmegaConf.to_yaml(paths))
     paths = OmegaConf.to_container(paths)
 
     log_path =paths["metrics"]["savepath"] if 'metrics' in paths and 'savepath' in paths['metrics'] else os.path.join("logs", log_path)

@@ -958,7 +958,7 @@ class ImageBARTSampler(torch.nn.Module):
 
     def __load_model_from_config(self, config, sd, eval_mode, init_first_stage=False):
         print("config:")
-        print(config.pretty())
+        print(OmegaConf.to_yaml(config))
         if not init_first_stage:
             print(f'Not initializing first stage model')
             config['model']['params']['first_stage_config']['target'] = 'braket.models.vqgan.VQSamplingDummyModel'
